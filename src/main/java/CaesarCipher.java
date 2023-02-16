@@ -6,6 +6,9 @@ class CaesarCipher {
     private static final String SHIFT_REQUEST = "Enter the shift value: ";
     private static final String ENCRYPTED_TEXT_OUTPUT_PREFIX = "Encrypted Text: ";
     private static final String DECRYPTED_TEXT_OUTPUT_PREFIX = "Decrypted Text: ";
+    private static final int ALPHABET_LENGTH = 26;
+    private static final char LAST_LETTER = 'z';
+    private static final char UPPERCASE_Z = 'Z';
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -34,9 +37,9 @@ class CaesarCipher {
             if (Character.isLetter(character)) {
                 character = (char) (character + shift);
 
-                if (Character.isUpperCase(plainText.charAt(i)) && character > 'Z'
-                        || Character.isLowerCase(plainText.charAt(i)) && character > 'z') {
-                    character = (char) (character - 26);
+                if (Character.isUpperCase(plainText.charAt(i)) && character > UPPERCASE_Z
+                        || Character.isLowerCase(plainText.charAt(i)) && character > ALPHABET_LENGTH) {
+                    character = (char) (character - LAST_LETTER);
                 }
             }
             encryptedText.append(character);
